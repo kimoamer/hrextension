@@ -118,13 +118,12 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Salary Slip": {
+        "before_save": "hrextension.doc_events.get_additional_half_day",
+		"on_update": "hrextension.doc_events.get_additional_half_day"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -215,3 +214,22 @@ app_license = "MIT"
 # auth_hooks = [
 #	"hrextension.auth.validate"
 # ]
+
+
+# UI Customization
+# --------------------------------
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Salary Slip-additional_half_day"
+                ],
+            ]
+        ],
+    },
+]
